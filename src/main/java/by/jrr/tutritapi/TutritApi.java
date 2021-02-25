@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TutritapiApplication {
+public class TutritApi {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TutritapiApplication.class, args);
+		SpringApplication.run(TutritApi.class, args);
 	}
 
 }
