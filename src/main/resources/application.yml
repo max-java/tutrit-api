@@ -1,0 +1,38 @@
+server:
+  port: 8078
+  session:
+    tracking-modes: cookie
+
+  #jasypt.encryptor.password=${JASYPT_ENCRYPTOR_PASSWORD}
+  #ExecStart=java -jar -Djasypt.encryptor.password=pass tutrit-api.jar
+  #or set -Djasypt.encryptor.password in VM options in run configuration
+#
+#my:
+#  datasource:
+#    url: ENC(YF/fAopufczzzIBL3ROLMLdDcVIhiUehPTtxk4jKAfBy86JipCSncFC1jjgTO3RxSOgEQf6Lmbanw0hxnQzxwWTB0txEVs0Q)
+#    dbname: API_TUTRIT
+#    encoding: useUnicode=yes&characterEncoding=UTF-8
+#
+#spring:
+#  datasource:
+#    url: jdbc:mysql://${my.datasource.url}/${my.datasource.dbname}?${my.datasource.encoding}
+#    username: ENC(raB7wo5ANQEZInvCnLQFkA==)
+#    password: ENC(NzB2TMfd0KA6RQYDt2322s0bRuhnIosq)
+#    initialization-mode: never
+#  jpa:
+#    hibernate:
+#      ddl-auto: validate
+
+keycloak:
+  auth-server-url: https://sso.jrr.by/auth/
+  realm: sso.tutrit.com
+  resource: tutritapi
+  bearer-only: true
+  enabled: true
+  cors: true
+#  public-client: true
+#  principal-attribute: preferred_username
+  ssl-required: ${KEYCLOAK_SSL_REQUIRED:external}
+#  confidential-port: ${KEYCLOAK_CONFIDENTIAL_PORT:443}
+
+
