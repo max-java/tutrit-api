@@ -14,6 +14,10 @@ configurations {
 	}
 }
 
+ext {
+	set('springCloudVersion', "2020.0.0")
+}
+
 repositories {
 	mavenCentral()
 }
@@ -37,8 +41,16 @@ dependencies {
 	// https://mvnrepository.com/artifact/com.h2database/h2
 	implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
 //	runtimeOnly 'mysql:mysql-connector-java'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 
 }
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
 
 test {
 	useJUnitPlatform()

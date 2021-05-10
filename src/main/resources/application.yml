@@ -3,10 +3,15 @@ server:
   session:
     tracking-modes: cookie
 
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:19020}/eureka/
+
   #jasypt.encryptor.password=${JASYPT_ENCRYPTOR_PASSWORD}
   #ExecStart=java -jar -Djasypt.encryptor.password=pass tutrit-api.jar
   #or set -Djasypt.encryptor.password in VM options in run configuration
-#
+
 #my:
 #  datasource:
 #    url: ENC(YF/fAopufczzzIBL3ROLMLdDcVIhiUehPTtxk4jKAfBy86JipCSncFC1jjgTO3RxSOgEQf6Lmbanw0hxnQzxwWTB0txEVs0Q)
@@ -14,6 +19,8 @@ server:
 #    encoding: useUnicode=yes&characterEncoding=UTF-8
 #
 #spring:
+#  application:
+#    name: dev-tutrit-api
 #  datasource:
 #    url: jdbc:mysql://${my.datasource.url}/${my.datasource.dbname}?${my.datasource.encoding}
 #    username: ENC(raB7wo5ANQEZInvCnLQFkA==)
@@ -23,16 +30,18 @@ server:
 #    hibernate:
 #      ddl-auto: validate
 
+
 keycloak:
-  auth-server-url: https://sso.jrr.by/auth/
-  realm: sso.tutrit.com
+  auth-server-url: https://sso.tutrit.com/auth/
+  realm: tutrit.jrr.by
   resource: tutritapi
   bearer-only: true
   enabled: true
   cors: true
-#  public-client: true
 #  principal-attribute: preferred_username
   ssl-required: ${KEYCLOAK_SSL_REQUIRED:external}
+#  public-client: true
+#  credentials:
+#    secret: uuid
+#  use-resource-role-mappings: false
 #  confidential-port: ${KEYCLOAK_CONFIDENTIAL_PORT:443}
-
-

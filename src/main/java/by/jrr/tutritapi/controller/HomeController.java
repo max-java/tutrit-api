@@ -1,6 +1,5 @@
 package by.jrr.tutritapi.controller;
 
-import by.jrr.tutritapi.model.HomeResponse;
 import org.keycloak.KeycloakPrincipal;
 import org.keycloak.KeycloakSecurityContext;
 import org.keycloak.adapters.springsecurity.account.SimpleKeycloakAccount;
@@ -19,7 +18,7 @@ import java.security.Principal;
 public class HomeController {
 
     @GetMapping("/home")
-    public HomeResponse getHomePage(HttpServletRequest request, Principal principal) {
+    public String getHomePage(HttpServletRequest request, Principal principal) {
         AccessToken accessToken;
         try {
             KeycloakAuthenticationToken token = (KeycloakAuthenticationToken) principal;
@@ -35,7 +34,7 @@ public class HomeController {
 
         }
 
-        return new HomeResponse(accessToken.getPreferredUsername() +" \n" + request.getHeader("authorization"));
+        return new String(accessToken.getPreferredUsername() +" \n" + request.getHeader("authorization"));
     }
 
     @GetMapping("/user")
@@ -55,9 +54,9 @@ public class HomeController {
     }
 
     @GetMapping("/event")
-    public HomeResponse getEventPage(HttpServletRequest request, Principal principal) {
+    public String getEventPage(HttpServletRequest request, Principal principal) {
 
-        return new HomeResponse("Event Page");
+        return new String("Event Page");
     }
 
 

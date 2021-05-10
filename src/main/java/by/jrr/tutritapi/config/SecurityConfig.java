@@ -53,6 +53,8 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(SWAGGER_WHITELIST).permitAll()
+                .antMatchers("/actuator/info").permitAll()
+                .antMatchers("/event").permitAll()
                 .anyRequest()
 //                .permitAll();
                 .access("hasRole('ADMIN')");
